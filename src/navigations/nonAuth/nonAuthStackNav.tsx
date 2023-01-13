@@ -1,13 +1,11 @@
 import React from 'react';
-import {Easing} from 'react-native';
-import {
-  createStackNavigator,
-  CardStyleInterpolators,
-} from '@react-navigation/stack';
+// import {Easing} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import MyApp from '../../screens/nonAuth/dumy';
 
 import SignInScreen from '../../screens/nonAuth/Sign';
-import RegisterScreen from '../../screens/nonAuth/Register';
-import OtpValidationScreen from '../../screens/nonAuth/otp';
+// import RegisterScreen from '../../screens/nonAuth/Register';
+// import OtpValidationScreen from '../../screens/nonAuth/otp';
 
 const NonAuth = createStackNavigator();
 
@@ -31,21 +29,14 @@ const NonAuth = createStackNavigator();
 //   },
 // };
 
-const RootStackScreen = ({navigation}:any) => {
+const RootStackScreen = () => {
   return (
-    <NonAuth.Navigator
-      screenOptions={{
-        gestureEnabled: false,
-        gestureDirection: 'horizontal',
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        // transitionSpec: {
-        // //   open: config,
-        // //   close: closeConfig,
-        // },
-      }}>
+    <NonAuth.Navigator>
+      <NonAuth.Screen name="myApp" component={MyApp} />
       <NonAuth.Screen name="signInScreen" component={SignInScreen} />
-      <NonAuth.Screen name="RegisterScreen" component={RegisterScreen} />
-      <NonAuth.Screen name="OtpvalidationScreen" component={OtpValidationScreen} />
+      {/* <NonAuth.Screen name="RegisterScreen" component={RegisterScreen} /> */}
     </NonAuth.Navigator>
   );
 };
+
+export default RootStackScreen;
